@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FaArrowCircleRight } from 'react-icons/fa';
 
 const ChefsCard = () => {
     const [chefs, setChefs] = useState([]);
@@ -31,7 +32,7 @@ const ChefsCard = () => {
                                     <p><span className='fw-bold'>Number of recipes:</span> {chef.numberOfRecipes}</p>
                                     <p><span className='fw-bold'>Likes:</span> {chef.likes}</p>
                                     <Link to={`/chefs/${chef.id}`}>
-                                        <Button className='bg-warning text-black fw-bold'>View Recipes</Button>
+                                        <Button variant="warning">View Recipes <FaArrowCircleRight></FaArrowCircleRight></Button>
                                     </Link>
                                 </div>
                             </div>

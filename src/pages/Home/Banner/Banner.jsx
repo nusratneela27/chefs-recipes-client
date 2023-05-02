@@ -2,6 +2,7 @@ import React from 'react';
 import About from '../About/About';
 import { Button, Container } from 'react-bootstrap';
 import ChefsCard from '../ChefsCard/ChefsCard';
+import Contact from '../Contact/Contact';
 
 const Banner = () => {
     return (
@@ -20,6 +21,7 @@ const Banner = () => {
             </div>
             <ChefsCard></ChefsCard>
             <About></About>
+            <Contact></Contact>
         </div>
     );
 };

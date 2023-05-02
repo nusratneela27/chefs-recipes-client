@@ -15,7 +15,7 @@ const Header = () => {
                         <Link className='ms-5 text-decoration-none text-black' to='/blog'>Blog</Link>
                         <img src={user} alt="" className='border border-2 rounded-circle ms-5' height="70" weight="70" />
                         <Link to='/login'>
-                            <Button className='bg-black ms-5'>Login</Button>
+                            <Button variant="dark" className='ms-5'>Login</Button>
                         </Link>
                     </Nav>
                 </Navbar.Collapse>

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
+import { FaRegStar } from 'react-icons/fa';
 
 const Recipes = () => {
     const recipe = useLoaderData()
@@ -33,7 +34,7 @@ const Recipes = () => {
                     {
                         item.map(recipeDetails =>
                             <div>
-                                <div className='p-3 mt-4 border rounded shadow'>
+                                <div className='p-3 mt-5 mb-5 border rounded shadow'>
                                     <div className='text-center'>
                                         <img src={recipeDetails.recipe1} className='rounded ' height="250" width="250" />
                                     </div>
@@ -42,6 +43,7 @@ const Recipes = () => {
                                         <p> <span className='fw-bold'>ingredients: </span> {recipeDetails.ingredients}</p>
                                         <p><span className='fw-bold'>cookingMethod: </span> {recipeDetails.cookingMethod}</p>
                                         <p><span className='fw-bold'>rating: </span> {recipeDetails.rating}</p>
+                                        <Button variant="warning"><FaRegStar></FaRegStar> Add to favorite</Button>
                                     </div>
                                 </div>
                             </div>
