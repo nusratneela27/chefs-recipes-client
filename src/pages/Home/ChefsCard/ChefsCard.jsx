@@ -27,9 +27,9 @@ const ChefsCard = () => {
                                 </div>
                                 <div className='ms-4 mt-2'>
                                     <h3>{chef.name}</h3>
-                                    <p>Year of experience: {chef.experience}</p>
-                                    <p>Number of recipes: {chef.numberOfRecipes}</p>
-                                    <p>Likes: {chef.likes}</p>
+                                    <p><span className='fw-bold'>Year of experience:</span> {chef.experience}</p>
+                                    <p><span className='fw-bold'>Number of recipes:</span> {chef.numberOfRecipes}</p>
+                                    <p><span className='fw-bold'>Likes:</span> {chef.likes}</p>
                                     <Link to={`/chefs/${chef.id}`}>
                                         <Button className='bg-warning text-black fw-bold'>View Recipes</Button>
                                     </Link>
