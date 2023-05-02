@@ -8,7 +8,7 @@ const About = () => {
         <Container className='rounded bg-warning bg-opacity-25 mt-5 mb-5'>
             <Row>
                 <Col md={6} className='p-5'>
-                    <div>
+                    <div className='about-img'>
                         <img src={about} alt="" height="400" weight="200" className='rounded' />
                     </div>
                 </Col>
