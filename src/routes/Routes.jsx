@@ -3,6 +3,7 @@ import Main from "../layout/Main";
 import Banner from "../pages/Home/Banner/Banner";
 import ChefsCard from "../pages/Home/ChefsCard/ChefsCard";
 import Blog from "../pages/Blog/Blog";
+import Recipes from "../pages/Recipes/Recipes";
 
 const router = createBrowserRouter([
     {
@@ -16,6 +17,11 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <ChefsCard></ChefsCard>
+            },
+            {
+                path: '/chefs/:id',
+                element: <Recipes></Recipes>,
+                loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
             },
             {
                 path: 'blog',
