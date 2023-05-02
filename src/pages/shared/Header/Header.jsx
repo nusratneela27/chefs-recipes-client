@@ -7,7 +7,7 @@ const Header = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="warning" >
             <Container>
-                <Navbar.Brand className='fw-bold fs-2' href="#home">Korean cuisine</Navbar.Brand>
+                <Navbar.Brand className='fw-bold fs-2' href="/">Korean cuisine</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="justify-content-end flex-grow-1 pe-3 fw-semibold align-items-center">
