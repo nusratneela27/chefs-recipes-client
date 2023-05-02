@@ -1,6 +1,6 @@
 import React from 'react';
 import About from '../About/About';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import ChefsCard from '../ChefsCard/ChefsCard';
 
 const Banner = () => {
@@ -8,8 +8,13 @@ const Banner = () => {
         <div>
             <div className='banner text-white'>
                 <Container className='pt-5'>
-                    <div >
-                        <h1 className='d-flex justify-content-center align-items-center'>Welcome To Our World Class <span style={{ color: 'orange' }}>Korean</span> Cuisine</h1>
+                    <div>
+                        <h1 className='d-flex justify-content-center text-warning fw-bold pt-5 mt-5 mb-4'>Korean Cuisine</h1>
+                        <h1 className='d-flex justify-content-center fw-bold mb-4'>Welcome To Our World Class Famous Chefs Website</h1>
+                        <h2 className='d-flex justify-content-center'>Browse through over 100 tasty recipes</h2>
+                        <div className='text-center mt-5'>
+                            <Button className="bg-warning text-black fw-bold ">Explore Recipes</Button>
+                        </div>
                     </div>
                 </Container>
             </div>
