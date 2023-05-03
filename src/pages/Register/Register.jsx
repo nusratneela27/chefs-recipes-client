@@ -63,13 +63,6 @@ const Register = () => {
 
                         <br />
 
-                        <div>
-                            <Button variant="light" className='me-3'><FaGoogle className='me-2'></FaGoogle> Login with Google</Button>
-                            <Button variant="light"><FaGithub className='me-2'></FaGithub>Login with Github</Button>
-                        </div>
-
-                        <br />
-
                         <Form.Text className="text-secondary">
                             Already Have an Account? <Link to='/login' className='text-warning fw-bold text-decoration-none'>Login</Link>
                         </Form.Text>

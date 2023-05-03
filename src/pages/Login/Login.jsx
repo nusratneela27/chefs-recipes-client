@@ -5,7 +5,7 @@ import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWInthGoogle, signInWInthGitHub } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const [error, setError] = useState("");
@@ -33,6 +33,30 @@ const Login = () => {
             })
     }
 
+    const handleGoogleSignIn = () => {
+        signInWInthGoogle()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleGitHubSignIn = () => {
+        signInWInthGitHub()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser);
+                navigate(from, { replace: true })
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     return (
         <Container>
             <Row>
@@ -55,8 +79,8 @@ const Login = () => {
                         <br />
 
                         <div>
-                            <Button variant="light" className='me-3'><FaGoogle className='me-2'></FaGoogle> Login with Google</Button>
-                            <Button variant="light"><FaGithub className='me-2'></FaGithub>Login with Github</Button>
+                            <Button onClick={handleGoogleSignIn} variant="light" className='me-3'><FaGoogle className='me-2'></FaGoogle> Login with Google</Button>
+                            <Button onClick={handleGitHubSignIn} variant="light"><FaGithub className='me-2'></FaGithub>Login with Github</Button>
                         </div>
 
                         <br />

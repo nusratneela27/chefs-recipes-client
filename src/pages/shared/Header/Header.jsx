@@ -25,14 +25,17 @@ const Header = () => {
                         {
                             user && <img src={users} alt="" className='border border-2 rounded-circle ms-5' height="70" weight="70" />
                         }
-                        {user ?
-                            <Button onClick={handleLogout} variant="dark" className='ms-5'>Logout</Button>
-                            :
-                            <Link to='/login'>
-                                <Button variant="dark" className='ms-5'>Login</Button>
-                            </Link>
+                        {
+                            user ?
+                                <>
+                                    <span>{user.email}</span>
+                                    <Button onClick={handleLogout} variant="dark" className='ms-5'>Logout</Button>
+                                </>
+                                :
+                                <Link to='/login'>
+                                    <Button variant="dark" className='ms-5'>Login</Button>
+                                </Link>
                         }
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>
