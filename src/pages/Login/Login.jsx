@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
     const [error, setError] = useState("");
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogin = event => {
         event.preventDefault();
@@ -23,7 +25,7 @@ const Login = () => {
                 console.log(loggedUser);
                 setError('')
                 event.target.reset();
-                navigate('/')
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 console.log(error);
