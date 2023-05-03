@@ -8,8 +8,8 @@ const Register = () => {
             <Row>
                 <Col md={6}>
                     <Form className='mt-5 mb-5 p-5 border rounded'>
-                        <h3>Please Register</h3>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <h3 className='fw-bold'>Please Register</h3>
+                        <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
                             <Form.Label>Name</Form.Label>
                             <Form.Control type="text" name='name' placeholder="Enter Your Name" required />
                         </Form.Group>
@@ -29,21 +29,14 @@ const Register = () => {
                             <Form.Control type="password" name='password' placeholder="Password" required />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check
-                                type="checkbox"
-                                name='accept'
-                                label={<>Accepts <Link to='/terms'>Terms and Conditions</Link> </>} />
-                        </Form.Group>
-
-                        <Button variant="warning" type="submit" >
+                        <Button variant="warning" type="submit" className='mb-3' >
                             Register
                         </Button>
 
                         <br />
 
                         <Form.Text className="text-secondary">
-                            Already Have an Account? <Link to='/login'>Login</Link>
+                            Already Have an Account? <Link to='/login' className='text-warning fw-bold text-decoration-none'>Login</Link>
                         </Form.Text>
                         <Form.Text className="text-success">
 
@@ -55,7 +48,7 @@ const Register = () => {
                 </Col>
                 <Col md={6}>
                     <div>
-                        <img src="https://i.ibb.co/f4Wk97z/register.png" alt="" className="w-100" />
+                        <img src="https://i.ibb.co/f4Wk97z/register.png" alt="" className="w-100 mt-5" />
                     </div>
                 </Col>
             </Row>
