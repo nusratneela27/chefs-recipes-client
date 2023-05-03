@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaGoogle, FaGithub } from 'react-icons/fa';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState("");
 
     const handleRegister = event => {
@@ -16,18 +15,31 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, email, photo, password);
-
         createUser(email, password)
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                handleUpdateProfile(name, photo);
                 setError('')
                 event.target.reset();
             })
             .catch(error => {
                 console.log(error.message);
                 setError("The password is less than 6 characters");
+            })
+    }
+
+    const handleUpdateProfile = (name, photo) => {
+        const profile = {
+            displayName: name,
+            photoURL: photo
+        }
+        updateUserProfile(profile)
+            .then(result => {
+
+            })
+            .catch(error => {
+                console.error(error);
             })
     }
 
