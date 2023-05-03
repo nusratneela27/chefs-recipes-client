@@ -9,7 +9,7 @@ const About = () => {
             <Row>
                 <Col md={6} className='p-5'>
                     <div className='about-img'>
-                        <img src={about} alt="" height="400" weight="200" className='rounded' />
+                        <img src={about} alt="" height="400" weight="200" className='rounded w-100' />
                     </div>
                 </Col>
                 <Col md={6} className='p-5'>

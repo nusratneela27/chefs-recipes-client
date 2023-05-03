@@ -1,31 +1,59 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext);
+    const [error, setError] = useState("");
+
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(name, email, photo, password);
+
+        createUser(email, password)
+            .then(result => {
+                const createdUser = result.user;
+                console.log(createdUser);
+                setError('')
+                event.target.reset();
+            })
+            .catch(error => {
+                console.log(error.message);
+                setError("The password is less than 6 characters");
+            })
+    }
+
     return (
         <Container>
             <Row>
                 <Col md={6}>
-                    <Form className='mt-5 mb-5 p-5 border rounded'>
+                    <Form onSubmit={handleRegister} className='mt-5 mb-5 p-5 border rounded'>
                         <h3 className='fw-bold'>Please Register</h3>
                         <Form.Group className="mb-3 mt-4" controlId="formBasicEmail">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label className='fw-bold'>Name</Form.Label>
                             <Form.Control type="text" name='name' placeholder="Enter Your Name" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Photo URL</Form.Label>
+                            <Form.Label className='fw-bold'>Photo URL</Form.Label>
                             <Form.Control type="text" name='photo' placeholder="Photo URL" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label className='fw-bold'>Email address</Form.Label>
                             <Form.Control type="email" name='email' placeholder="Enter email" required />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label className='fw-bold'>Password</Form.Label>
                             <Form.Control type="password" name='password' placeholder="Password" required />
                         </Form.Group>
 
@@ -35,14 +63,21 @@ const Register = () => {
 
                         <br />
 
+                        <div>
+                            <Button variant="light" className='me-3'><FaGoogle className='me-2'></FaGoogle> Login with Google</Button>
+                            <Button variant="light"><FaGithub className='me-2'></FaGithub>Login with Github</Button>
+                        </div>
+
+                        <br />
+
                         <Form.Text className="text-secondary">
                             Already Have an Account? <Link to='/login' className='text-warning fw-bold text-decoration-none'>Login</Link>
                         </Form.Text>
                         <Form.Text className="text-success">
-
+                            <br />
                         </Form.Text>
                         <Form.Text className="text-danger">
-
+                            {error}
                         </Form.Text>
                     </Form>
                 </Col>
