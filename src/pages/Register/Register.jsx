@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
     const [error, setError] = useState("");
 
     const handleRegister = event => {
@@ -19,6 +19,7 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
+                updateUser(name, photo)
                 setError('')
                 event.target.reset();
             })
@@ -27,20 +28,6 @@ const Register = () => {
                 setError("The password is less than 6 characters");
             })
     }
-
-    // const handleUpdateProfile = (name, photo) => {
-    //     const profile = {
-    //         displayName: name,
-    //         photoURL: photo
-    //     }
-    //     updateUserProfile(profile)
-    //         .then(result => {
-
-    //         })
-    //         .catch(error => {
-    //             console.error(error);
-    //         })
-    // }
 
     return (
         <Container>

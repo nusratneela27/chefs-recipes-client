@@ -5,6 +5,8 @@ import { FaRegStar } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css'
 
 const Recipes = () => {
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -54,9 +56,11 @@ const Recipes = () => {
                                         <p> <span className='fw-bold'>ingredients: </span> {recipeDetails.ingredients}</p>
                                         <p><span className='fw-bold'>cookingMethod: </span> {recipeDetails.cookingMethod}</p>
                                         <p><span className='fw-bold'>rating: </span> {recipeDetails.rating}</p>
-
+                                        <Rating
+                                            style={{ maxWidth: 100 }}
+                                            readOnly />
                                         <div>
-                                            <Button onClick={handleFevButton} disabled={buttonClicked} variant="warning"><FaRegStar></FaRegStar> Add to favorite</Button>
+                                            <Button className='mt-2' onClick={handleFevButton} disabled={buttonClicked} variant="warning"><FaRegStar></FaRegStar> Add to favorite</Button>
                                         </div>
 
                                     </div>

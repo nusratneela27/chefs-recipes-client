@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
-import users from '../../../assets/images.jpeg'
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Header = () => {
@@ -13,6 +12,12 @@ const Header = () => {
             .catch(error => console.log(error))
     }
 
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            <span>{user.displayName}</span>
+        </Tooltip>
+    );
+
     return (
         <Navbar collapseOnSelect expand="lg" bg="warning" >
             <Container>
@@ -23,12 +28,22 @@ const Header = () => {
                         <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link default"} to='/'>Home</NavLink>
                         <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link default"} to='/blog'>Blog</NavLink>
                         {
-                            user && <img src={users} alt="" className='border border-2 rounded-circle ms-5' height="70" weight="70" />
+                            user &&
+
+
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={renderTooltip}
+                            >
+                                <img src={user.photoURL} alt="" className='border border-2 rounded-circle ms-5' height="70" weight="70" />
+                            </OverlayTrigger>
+
                         }
                         {
                             user ?
                                 <>
-                                    <span>{user?.displayName}</span>
+
                                     <Button onClick={handleLogout} variant="dark" className='ms-5'>Logout</Button>
                                 </>
                                 :
