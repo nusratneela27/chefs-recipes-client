@@ -19,7 +19,6 @@ const Register = () => {
             .then(result => {
                 const createdUser = result.user;
                 console.log(createdUser);
-                handleUpdateProfile(name, photo);
                 setError('')
                 event.target.reset();
             })
@@ -29,19 +28,19 @@ const Register = () => {
             })
     }
 
-    const handleUpdateProfile = (name, photo) => {
-        const profile = {
-            displayName: name,
-            photoURL: photo
-        }
-        updateUserProfile(profile)
-            .then(result => {
+    // const handleUpdateProfile = (name, photo) => {
+    //     const profile = {
+    //         displayName: name,
+    //         photoURL: photo
+    //     }
+    //     updateUserProfile(profile)
+    //         .then(result => {
 
-            })
-            .catch(error => {
-                console.error(error);
-            })
-    }
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         })
+    // }
 
     return (
         <Container>

@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Col, Container, Row } from 'react-bootstrap';
 import { useLoaderData, useParams } from 'react-router-dom';
 import { FaRegStar } from 'react-icons/fa';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const Recipes = () => {
+    const [buttonClicked, setButtonClicked] = useState(false);
+
+    const handleFevButton = () => {
+        toast.success('added to favorite')
+        setButtonClicked(true);
+    };
+
     const recipe = useLoaderData()
     const item = recipe?.recipes
     return (
@@ -13,7 +23,8 @@ const Recipes = () => {
                     <Row>
                         <Col md={4}>
                             <div className='ps-5'>
-                                <img src={recipe.img} className='rounded ' height="300" width="250" />
+                                <LazyLoadImage effect="blur" src={recipe.img} className='rounded ' height="300" width="250">
+                                </LazyLoadImage>
                             </div>
                         </Col>
                         <Col md={8}>
@@ -43,7 +54,11 @@ const Recipes = () => {
                                         <p> <span className='fw-bold'>ingredients: </span> {recipeDetails.ingredients}</p>
                                         <p><span className='fw-bold'>cookingMethod: </span> {recipeDetails.cookingMethod}</p>
                                         <p><span className='fw-bold'>rating: </span> {recipeDetails.rating}</p>
-                                        <Button variant="warning"><FaRegStar></FaRegStar> Add to favorite</Button>
+
+                                        <div>
+                                            <Button onClick={handleFevButton} disabled={buttonClicked} variant="warning"><FaRegStar></FaRegStar> Add to favorite</Button>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -51,6 +66,7 @@ const Recipes = () => {
                     }
                 </div>
             </Container>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

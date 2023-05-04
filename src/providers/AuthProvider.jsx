@@ -30,10 +30,6 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, gitHubAuthProvider);
     }
 
-    const updateUserProfile = (profile) => {
-        return updateProfile(auth, profile);
-    }
-
     const logOut = () => {
         setLoading(true);
         return signOut(auth)
@@ -49,7 +45,7 @@ const AuthProvider = ({ children }) => {
             unsubscribe();
         }
 
-    }, [user])
+    }, [])
 
     const authInfo = {
         user,
@@ -58,7 +54,6 @@ const AuthProvider = ({ children }) => {
         signIn,
         signInWInthGoogle,
         signInWInthGitHub,
-        updateUserProfile,
         logOut
     }
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import users from '../../../assets/images.jpeg'
 import { AuthContext } from '../../../providers/AuthProvider';
 
@@ -20,8 +20,8 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="justify-content-end flex-grow-1 pe-3 fw-semibold align-items-center">
-                        <Link className='ms-5 text-decoration-none text-black' to='/'>Home</Link>
-                        <Link className='ms-5 text-decoration-none text-black' to='/blog'>Blog</Link>
+                        <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link default"} to='/'>Home</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? "nav-link active" : "nav-link default"} to='/blog'>Blog</NavLink>
                         {
                             user && <img src={users} alt="" className='border border-2 rounded-circle ms-5' height="70" weight="70" />
                         }

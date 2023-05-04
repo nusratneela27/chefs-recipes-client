@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaArrowCircleRight } from 'react-icons/fa';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ChefsCard = () => {
     const [chefs, setChefs] = useState([]);
@@ -24,7 +26,8 @@ const ChefsCard = () => {
                             <div className='p-3 mt-4 border rounded shadow'
                             >
                                 <div className='text-center'>
-                                    <img src={chef.img} className='rounded ' height="300" width="250" />
+                                    <LazyLoadImage effect="blur" src={chef.img} className='rounded ' height="300" width="250">
+                                    </LazyLoadImage>
                                 </div>
                                 <div className='ms-4 mt-2'>
                                     <h3>{chef.name}</h3>
