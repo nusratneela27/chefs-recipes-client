@@ -7,14 +7,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
+import RecipesCard from './RecipesCard';
 
 const Recipes = () => {
-    const [buttonClicked, setButtonClicked] = useState(false);
 
-    const handleFevButton = () => {
-        toast.success('added to favorite')
-        setButtonClicked(true);
-    };
 
     const recipe = useLoaderData()
     const item = recipe?.recipes
@@ -45,32 +41,14 @@ const Recipes = () => {
             <Container>
                 <div className='row row-cols-1 row-cols-md-3'>
                     {
-                        item.map(recipeDetails =>
-                            <div>
-                                <div className='p-3 mt-5 mb-5 border rounded shadow'>
-                                    <div className='text-center'>
-                                        <img src={recipeDetails.recipe1} className='rounded ' height="250" width="250" />
-                                    </div>
-                                    <div className='ms-4 mt-2'>
-                                        <h3 className='fw-bold'>{recipeDetails.recipeName}</h3>
-                                        <p> <span className='fw-bold'>ingredients: </span> {recipeDetails.ingredients}</p>
-                                        <p><span className='fw-bold'>cookingMethod: </span> {recipeDetails.cookingMethod}</p>
-                                        <p><span className='fw-bold'>rating: </span> {recipeDetails.rating}</p>
-                                        <Rating
-                                            style={{ maxWidth: 100 }}
-                                            readOnly />
-                                        <div>
-                                            <Button className='mt-2' onClick={handleFevButton} disabled={buttonClicked} variant="warning"><FaRegStar></FaRegStar> Add to favorite</Button>
-                                        </div>
+                        item.map(recipeDetails => <RecipesCard
+                            recipeDetails={recipeDetails}
+                        ></RecipesCard>
 
-                                    </div>
-                                </div>
-                            </div>
                         )
                     }
                 </div>
             </Container>
-            <ToastContainer></ToastContainer>
         </div>
     );
 };

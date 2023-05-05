@@ -17,6 +17,8 @@ const ChefsCard = () => {
 
     return (
         <Container>
+            <h1 className='d-flex justify-content-center p-4'>All Chefs Here</h1>
+            <hr />
             <div className='row row-cols-1 row-cols-md-3'>
                 {
                     chefs.map(chef =>
